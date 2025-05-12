@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import org.jgrapht.nio.dot.DOTExporter;
+import org.jgrapht.nio.AttributeType;
+import org.jgrapht.nio.DefaultAttribute;
 import org.jgrapht.nio.ExportException;
 import java.io.FileWriter;
 
@@ -20,11 +22,14 @@ public class Main {
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
         DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>();
         try (FileWriter writer = new FileWriter("/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/src/main/graph.dot")) {
-            exporter.exportGraph(graph, writer);
+        exporter.setVertexAttributeProvider((x) -> Map.of("label", new DefaultAttribute<>(x, AttributeType.STRING)));
+        exporter.exportGraph(graph, new FileWriter("./src/main/graph.dot"));
             System.out.println("Graph exported to DOT format successfully.");
         } catch (ExportException | IOException e) {
             System.err.println("Error exporting graph to DOT format: " + e.getMessage());
         }
-
     }
+
+    
 }
+
