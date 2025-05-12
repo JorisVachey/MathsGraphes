@@ -18,6 +18,15 @@ public class Main {
         Graph<String, DefaultEdge> graph = CollaborationGraphBuilder.buildCollaborationGraph("/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/src/donnees/data_100.json");
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
+        
+        
+        Set<String> inactifs = new HashSet<>();
+		for( String v : graph.vertexSet()){
+			if(graph.degreeOf(v)<20)
+				inactifs.add(v);
+		}
+		graph.removeAllVertices(inactifs);
+        
         DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>();
         try (FileWriter writer = new FileWriter("/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/src/main/graph.dot")) {
             exporter.exportGraph(graph, writer);
@@ -25,6 +34,9 @@ public class Main {
         } catch (ExportException | IOException e) {
             System.err.println("Error exporting graph to DOT format: " + e.getMessage());
         }
+
+        
+		
 
     }
 }
