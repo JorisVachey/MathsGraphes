@@ -21,12 +21,19 @@ public class Main {
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
 
+        /*
         Set<String> inactifs = new HashSet<>();
 		for( String v : graph.vertexSet()){
 			if(graph.degreeOf(v)<30)
 				inactifs.add(v);
 		}
 		graph.removeAllVertices(inactifs);
+<<<<<<< HEAD
+=======
+        */
+
+        System.out.println(graph.vertexSet());
+>>>>>>> 6a2641f (sda)
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
 <<<<<<< HEAD
@@ -35,6 +42,7 @@ public class Main {
 =======
         //System.out.println(getNeighborsOf(graph, "Al Pacino"));
         System.out.println(collaborateursCommun(graph, "Al Pacino", "Austin Butler"));
+<<<<<<< HEAD
 >>>>>>> 8bd131e (nigga)
         
 <<<<<<< HEAD
@@ -52,10 +60,16 @@ public class Main {
 
         
 =======
+=======
+        /* 
+>>>>>>> 6a2641f (sda)
         try{
         afficheGraphe(graph);
         }
         catch (IOException e) {System.out.println("ERREUR");}
+        */
+
+        System.out.println(centralite(graph, "Leonardo DiCaprio", 8));
     
 >>>>>>> 1a9da27 (commit suicide)
 =======
@@ -128,7 +142,76 @@ public class Main {
         return collaborateurs;
     }
 
+    public static Integer centralite(Graph<String, DefaultEdge> graph, String u, int k) {
+        if (!graph.containsVertex(u)) {
+            System.out.println(u + " est un illustre inconnu");
+            return null;
+        }
+        Set<String> collaborateurs = new HashSet<>();
+        collaborateurs.add(u);
+        int dist = 0;
 
+        for (int i = 1; i <= k; i++) {
+            Set<String> collaborateursDirects = new HashSet<>();
+            for (String c : collaborateurs) {
+                for (DefaultEdge edge : graph.edgesOf(c)) {
+                    String v = graph.getEdgeSource(edge).equals(c) ? graph.getEdgeTarget(edge) : graph.getEdgeSource(edge);
+                    if (!collaborateurs.contains(v)) {
+                        collaborateursDirects.add(v);
+                        if (dist < i){dist = i;}
+                    }
+                }
+            }
+            collaborateurs.addAll(collaborateursDirects);
+        }
+        return dist;
+    }
+
+    public static String centraliteMin(Graph<String, DefaultEdge> graph)
+    {
+        Integer min = null;
+        String name = null;
+        for (String s : graph.vertexSet())
+        {
+            if (min == null)
+            {
+                min = centralite(graph, s, 8);
+                name = s;
+            }
+            else {
+                int c = centralite(graph, s, 8);
+                if (c < min)
+                {
+                    min = c;
+                    name = s;
+                }
+            }
+        }  
+        return name;
+    }
+
+    public static String centraliteMax(Graph<String, DefaultEdge> graph)
+    {
+        Integer max = null;
+        String name = null;
+        for (String s : graph.vertexSet())
+        {
+            if (max == null)
+            {
+                max = centralite(graph, s, 8);
+                name = s;
+            }
+            else {
+                int c = centralite(graph, s, 8);
+                if (c > max)
+                {
+                    max = c;
+                    name = s;
+                }
+            }
+        }  
+        return name;
+    }
 
     public static int distanceMaximale(Graph<String, DefaultEdge> graph) {
         int maxDistance = 0;
