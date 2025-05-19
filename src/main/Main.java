@@ -29,8 +29,13 @@ public class Main {
 		graph.removeAllVertices(inactifs);
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
+<<<<<<< HEAD
         System.out.println(collaborateursProches(graph, "Al Pacino", 1));
         System.out.println(distanceMaximale(graph));
+=======
+        //System.out.println(getNeighborsOf(graph, "Al Pacino"));
+        System.out.println(collaborateursCommun(graph, "Al Pacino", "Austin Butler"));
+>>>>>>> 8bd131e (nigga)
         
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -61,10 +66,14 @@ public class Main {
 >>>>>>> 88f278c (first commit)
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     
 =======
     public Set<String> getNeighborsOf(Graph<String, DefaultEdge> graph, String p)
+=======
+    public static Set<String> getNeighborsOf(Graph<String, DefaultEdge> graph, String p)
+>>>>>>> 8bd131e (nigga)
     {
         Set<String> set = new HashSet<>();
 
@@ -77,7 +86,7 @@ public class Main {
     }
 
 
-    public Set<String> collaborateursCommun(Graph<String, DefaultEdge> graph, String p1, String p2)
+    public static Set<String> collaborateursCommun(Graph<String, DefaultEdge> graph, String p1, String p2)
     {
         Set<String> neighbors1 = getNeighborsOf(graph, p1);
         Set<String> neighbors2 = getNeighborsOf(graph, p2);
