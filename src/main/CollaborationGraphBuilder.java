@@ -22,9 +22,9 @@ public class CollaborationGraphBuilder {
 
                 Set<String> participants = new HashSet<>();
                 if (film.cast != null) participants.addAll(cleanNames(film.cast));
-                if (film.directors != null) participants.addAll(cleanNames(film.directors));
-                if (film.producers != null) participants.addAll(cleanNames(film.producers));
-
+                //if (film.directors != null) participants.addAll(cleanNames(film.directors));
+                //if (film.producers != null) participants.addAll(cleanNames(film.producers));
+                
                 for (String person : participants) {
                     graph.addVertex(person);
                 }
@@ -42,7 +42,7 @@ public class CollaborationGraphBuilder {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        System.out.println(graph.vertexSet());
         return graph;
     }
 
