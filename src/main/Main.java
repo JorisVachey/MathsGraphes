@@ -38,6 +38,8 @@ public class Main {
         System.out.println(graph.vertexSet());
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
+        //System.out.println(getNeighborsOf(graph, "Al Pacino"));
+        System.out.println(collaborateursCommun(graph, "Al Pacino", "Austin Butler"));
         
         try{
         afficheGraphe(graph);
@@ -47,7 +49,7 @@ public class Main {
 		
 
     }
-    public Set<String> getNeighborsOf(Graph<String, DefaultEdge> graph, String p)
+    public static Set<String> getNeighborsOf(Graph<String, DefaultEdge> graph, String p)
     {
         Set<String> set = new HashSet<>();
 
@@ -60,7 +62,7 @@ public class Main {
     }
 
 
-    public Set<String> collaborateursCommun(Graph<String, DefaultEdge> graph, String p1, String p2)
+    public static Set<String> collaborateursCommun(Graph<String, DefaultEdge> graph, String p1, String p2)
     {
         Set<String> neighbors1 = getNeighborsOf(graph, p1);
         Set<String> neighbors2 = getNeighborsOf(graph, p2);
