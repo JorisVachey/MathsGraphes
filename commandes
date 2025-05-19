@@ -1,0 +1,5 @@
+javac -d bin -cp "lib/*:src" src/main/*.java
+
+java -cp "bin:lib/*" main.Main
+
+dot -T pdf graph.dot -o graph.pdf

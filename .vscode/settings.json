@@ -3,10 +3,11 @@
         "src"
     ],
     "java.project.referencedLibraries": [
+        "lib/gson-2.10.1.jar",
+        "lib/hamcrest-2.2.jar",
+        "lib/jgrapht-core-1.5.2.jar",
         "lib/jgrapht-io-1.5.2.jar",
-        "/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/lib/hamcrest-2.2.jar",
-        "/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/lib/jgrapht-core-1.5.2.jar",
-        "/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/lib/junit-4.13.2.jar",
-        "/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/lib/gson-2.10.1.jar"
+        "lib/junit-4.13.2.jar",
+        "/home/iut45/Etudiants/o22402482/Documents/SAE/graph/MathsGraphes/lib/jgrapht-io-1.5.2.jar"
     ]
 }
