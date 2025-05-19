@@ -80,12 +80,34 @@ public class Main {
         return collabo;
     }
 
+
+    public static Set<String> collaborateursProches(Graph<String, DefaultEdge> graph, String u, int k) {
+        if (!graph.containsVertex(u)) {
+            System.out.println(u + " est un illustre inconnu");
+            return null;
+        }
+        Set<String> collaborateurs = new HashSet<>();
+        collaborateurs.add(u);
+
+        for (int i = 1; i <= k; i++) {
+            Set<String> collaborateursDirects = new HashSet<>();
+            for (String c : collaborateurs) {
+                for (DefaultEdge edge : graph.edgesOf(c)) {
+                    String v = graph.getEdgeSource(edge).equals(c) ? graph.getEdgeTarget(edge) : graph.getEdgeSource(edge);
+                    if (!collaborateurs.contains(v)) {
+                        collaborateursDirects.add(v);
+                    }
+                }
+            }
+            collaborateurs.addAll(collaborateursDirects);
+        }
+        return collaborateurs;
+    }
+
+
+
     public static void afficheGraphe(Graph<String, DefaultEdge> graph) throws IOException
     {
-
-        DOTExporter<String, DefaultEdge> exporter = new DOTExporter<String, DefaultEdge>();
-        exporter.setVertexAttributeProvider((x) -> Map.of("label", new DefaultAttribute<>(x, AttributeType.STRING)));
-        exporter.exportGraph(graph, new FileWriter("graph.dot"));
         DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>();
         try (FileWriter writer = new FileWriter("/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/src/main/graph.dot")) {
         exporter.setVertexAttributeProvider((x) -> Map.of("label", new DefaultAttribute<>(x, AttributeType.STRING)));
