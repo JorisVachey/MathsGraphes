@@ -20,14 +20,6 @@ public class Main {
         Graph<String, DefaultEdge> graph = CollaborationGraphBuilder.buildCollaborationGraph("./src/donnees/data_100.json");
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
-        
-        int i = 0;
-
-        for (String s : graph.vertexSet())
-        {
-            if (s.equals("Al Pacino")){i++;}
-        }
-        System.out.println("i = " + i);
 
         Set<String> inactifs = new HashSet<>();
 		for( String v : graph.vertexSet()){
@@ -35,10 +27,12 @@ public class Main {
 				inactifs.add(v);
 		}
 		graph.removeAllVertices(inactifs);
-        System.out.println(graph.vertexSet());
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
+        System.out.println(collaborateursProches(graph, "Al Pacino", 1));
+        System.out.println(distanceMaximale(graph));
         
+<<<<<<< HEAD
 <<<<<<< HEAD
         DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>();
         try (FileWriter writer = new FileWriter("/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/src/main/graph.dot")) {
@@ -59,6 +53,9 @@ public class Main {
         catch (IOException e) {System.out.println("ERREUR");}
     
 >>>>>>> 1a9da27 (commit suicide)
+=======
+ 
+>>>>>>> 0fe3261 (ajout distanceMax)
 		
 
 >>>>>>> 88f278c (first commit)
@@ -120,6 +117,40 @@ public class Main {
             collaborateurs.addAll(collaborateursDirects);
         }
         return collaborateurs;
+    }
+
+
+
+    public static int distanceMaximale(Graph<String, DefaultEdge> graph) {
+        int maxDistance = 0;
+        List<String> vertices = new ArrayList<>(graph.vertexSet());
+        for (int i = 0; i < vertices.size(); i++) {
+            String source = vertices.get(i);
+            Map<String, Integer> distances = new HashMap<>();
+            Queue<String> queue = new LinkedList<>();
+            distances.put(source, 0);
+            queue.add(source);
+
+            while (!queue.isEmpty()) {
+                String current = queue.poll();
+                int currentDistance = distances.get(current);
+                for (DefaultEdge edge : graph.edgesOf(current)) {
+                    String neighbor = graph.getEdgeSource(edge).equals(current)
+                            ? graph.getEdgeTarget(edge)
+                            : graph.getEdgeSource(edge);
+                    if (!distances.containsKey(neighbor)) {
+                        distances.put(neighbor, currentDistance + 1);
+                        queue.add(neighbor);
+                    }
+                }
+            }
+            for (int d : distances.values()) {
+                if (d > maxDistance) {
+                    maxDistance = d;
+                }
+            }
+        }
+        return maxDistance;
     }
 
 

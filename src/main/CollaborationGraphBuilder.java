@@ -46,7 +46,6 @@ public class CollaborationGraphBuilder {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(graph.vertexSet());
         return graph;
     }
 
