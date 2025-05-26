@@ -52,7 +52,9 @@ public class Main {
         catch (IOException e) {System.out.println("ERREUR");}
         */
 
-        System.out.println(centralite(graph, "Leonardo DiCaprio", 8));
+        System.out.println(centralite(graph, "Al Pacino", 8));
+        System.out.println(centraliteMax(graph));
+        System.out.println(centraliteMin(graph));
     
 		
 
@@ -181,6 +183,37 @@ public class Main {
             }
         }  
         return name;
+    }
+
+    public static Integer distance(Graph<String, DefaultEdge> graph, String u, String arret) {
+        if (!graph.containsVertex(u) || !graph.containsVertex(arret)) {
+            System.out.println(u + " est un illustre inconnu");
+            return null;
+        }
+        Set<String> collaborateurs = new HashSet<>();
+        collaborateurs.add(u);
+        boolean trouve = false;
+
+        int distance = 0;
+        while (!trouve){
+            Set<String> collaborateursDirects = new HashSet<>();
+            for (String c : collaborateurs) {
+                for (DefaultEdge edge : graph.edgesOf(c)) {
+                    String v = graph.getEdgeSource(edge).equals(c) ? graph.getEdgeTarget(edge) : graph.getEdgeSource(edge);
+                    if (!collaborateurs.contains(v)) {
+                        collaborateursDirects.add(v);
+                    }
+                    if (v.equals(arret))
+                    {
+                        trouve = true;
+                    }
+                }
+            
+            }
+            collaborateurs.addAll(collaborateursDirects);
+            distance++;
+        }
+        return distance;
     }
 
     public static void afficheGraphe(Graph<String, DefaultEdge> graph) throws IOException
