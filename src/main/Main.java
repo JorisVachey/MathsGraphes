@@ -32,6 +32,7 @@ public class Main {
 =======
         */
 
+<<<<<<< HEAD
         System.out.println(graph.vertexSet());
 >>>>>>> 6a2641f (sda)
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
@@ -61,6 +62,14 @@ public class Main {
         
 =======
 =======
+=======
+        System.out.println("Nombre de personnes : " + graph.vertexSet().size()+"\n");
+        System.out.println("Nombre de collaborations : " + graph.edgeSet().size()+"\n");
+        System.out.println("les collaborateurs de al pacino sont: " + collaborateursProches(graph, "Al Pacino", 1)+"\n");
+        System.out.println("La distance Maximale dans le graphe est: "+ distanceMaximale(graph)+"\n");
+        //System.out.println(getNeighborsOf(graph, "Al Pacino"));
+        System.out.println(collaborateursCommun(graph, "Al Pacino", "Austin Butler")+"\n");
+>>>>>>> 3b46de0 (changement de l affichage)
         /* 
 >>>>>>> 6a2641f (sda)
         try{
@@ -69,12 +78,16 @@ public class Main {
         catch (IOException e) {System.out.println("ERREUR");}
         */
 
+<<<<<<< HEAD
         System.out.println(centralite(graph, "Al Pacino", 8));
         System.out.println(centraliteMax(graph));
         System.out.println(centraliteMin(graph));
     
 >>>>>>> 1a9da27 (commit suicide)
 =======
+=======
+        System.out.println(centralite(graph, "Leonardo DiCaprio", 8)+"\n");
+>>>>>>> 3b46de0 (changement de l affichage)
  
 >>>>>>> 0fe3261 (ajout distanceMax)
 		
