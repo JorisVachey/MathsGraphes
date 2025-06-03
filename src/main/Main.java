@@ -32,92 +32,21 @@ public class Main {
 		graph.removeAllVertices(inactifs);
         */
 
-        Graph<String, DefaultEdge> graph = CollaborationGraphBuilder.buildCollaborationGraph("./src/donnees/data_100.json");
         System.out.println("Nombre de personnes : " + graph.vertexSet().size());
         System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
-
-        /*
-        Set<String> inactifs = new HashSet<>();
-		for( String v : graph.vertexSet()){
-			if(graph.degreeOf(v)<30)
-				inactifs.add(v);
-		}
-		graph.removeAllVertices(inactifs);
-<<<<<<< HEAD
-=======
-        */
-
-<<<<<<< HEAD
-        System.out.println(graph.vertexSet());
->>>>>>> 6a2641f (sda)
-        System.out.println("Nombre de personnes : " + graph.vertexSet().size());
-        System.out.println("Nombre de collaborations : " + graph.edgeSet().size());
-<<<<<<< HEAD
         System.out.println(collaborateursProches(graph, "Al Pacino", 1));
         System.out.println(distanceMaximale(graph));
-=======
         //System.out.println(getNeighborsOf(graph, "Al Pacino"));
         System.out.println(collaborateursCommun(graph, "Al Pacino", "Austin Butler"));
-<<<<<<< HEAD
->>>>>>> 8bd131e (nigga)
-        
-<<<<<<< HEAD
-<<<<<<< HEAD
-        DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>();
-        try (FileWriter writer = new FileWriter("/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/src/main/graph.dot")) {
-        exporter.setVertexAttributeProvider((x) -> Map.of("label", new DefaultAttribute<>(x, AttributeType.STRING)));
-        exporter.exportGraph(graph, new FileWriter("./src/main/graph.dot"));
-            System.out.println("Graph exported to DOT format successfully.");
-        } catch (ExportException | IOException e) {
-            System.err.println("Error exporting graph to DOT format: " + e.getMessage());
-        }
-<<<<<<< HEAD
-=======
-
-        
-=======
-=======
-=======
-        System.out.println("Nombre de personnes : " + graph.vertexSet().size()+"\n");
-        System.out.println("Nombre de collaborations : " + graph.edgeSet().size()+"\n");
-        System.out.println("les collaborateurs de al pacino sont: " + collaborateursProches(graph, "Al Pacino", 1)+"\n");
-        System.out.println("La distance Maximale dans le graphe est: "+ distanceMaximale(graph)+"\n");
-        //System.out.println(getNeighborsOf(graph, "Al Pacino"));
-        System.out.println(collaborateursCommun(graph, "Al Pacino", "Austin Butler")+"\n");
->>>>>>> 3b46de0 (changement de l affichage)
         /* 
->>>>>>> 6a2641f (sda)
-        try{
-        afficheGraphe(graph);
-        }
-        catch (IOException e) {System.out.println("ERREUR");}
         */
 
-<<<<<<< HEAD
-        System.out.println(centralite(graph, "Al Pacino", 8));
-        System.out.println(centraliteMax(graph));
-        System.out.println(centraliteMin(graph));
-    
->>>>>>> 1a9da27 (commit suicide)
-=======
-=======
-        System.out.println(centralite(graph, "Leonardo DiCaprio", 8)+"\n");
->>>>>>> 3b46de0 (changement de l affichage)
+        System.out.println(centralite(graph, "Leonardo DiCaprio", 8));
  
->>>>>>> 0fe3261 (ajout distanceMax)
 		
 
->>>>>>> 88f278c (first commit)
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    
-=======
-    public Set<String> getNeighborsOf(Graph<String, DefaultEdge> graph, String p)
-=======
     public static Set<String> getNeighborsOf(Graph<String, DefaultEdge> graph, String p)
->>>>>>> 8bd131e (nigga)
     {
         Set<String> set = new HashSet<>();
 
@@ -243,7 +172,6 @@ public class Main {
         return name;
     }
 
-<<<<<<< HEAD
     public static int distanceMaximale(Graph<String, DefaultEdge> graph) {
         int maxDistance = 0;
         List<String> vertices = new ArrayList<>(graph.vertexSet());
@@ -278,7 +206,6 @@ public class Main {
 
 
 
-=======
     public static Integer distance(Graph<String, DefaultEdge> graph, String u, String arret) {
         if (!graph.containsVertex(u) || !graph.containsVertex(arret)) {
             System.out.println(u + " est un illustre inconnu");
@@ -310,15 +237,8 @@ public class Main {
         return distance;
     }
 
->>>>>>> e840227 (ajout de fonctions diverses)
     public static void afficheGraphe(Graph<String, DefaultEdge> graph) throws IOException
     {
-<<<<<<< HEAD
-
-        DOTExporter<String, DefaultEdge> exporter = new DOTExporter<String, DefaultEdge>();
-        exporter.setVertexAttributeProvider((x) -> Map.of("label", new DefaultAttribute<>(x, AttributeType.STRING)));
-        exporter.exportGraph(graph, new FileWriter("graph.dot"));
-=======
         DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>();
         try (FileWriter writer = new FileWriter("/home/iut45/Etudiants/o22401713/Semestre2/SAE_semestre2/MathsGraphes/src/main/graph.dot")) {
         exporter.setVertexAttributeProvider((x) -> Map.of("label", new DefaultAttribute<>(x, AttributeType.STRING)));
@@ -327,8 +247,8 @@ public class Main {
         } catch (ExportException | IOException e) {
             System.err.println("Error exporting graph to DOT format: " + e.getMessage());
         }
->>>>>>> d3c1795 (Add method to find close collaborators and improve graph export functionality)
     }
->>>>>>> 1a9da27 (commit suicide)
+
+    
 }
 
