@@ -22,9 +22,13 @@ public class CollaborationGraphBuilder {
 
                 Set<String> participants = new HashSet<>();
                 if (film.cast != null) participants.addAll(cleanNames(film.cast));
-                ////if (film.directors != null) participants.addAll(cleanNames(film.directors));
-                ////if (film.producers != null) participants.addAll(cleanNames(film.producers));
+                //if (film.directors != null) participants.addAll(cleanNames(film.directors));
+                //if (film.producers != null) participants.addAll(cleanNames(film.producers));
+<<<<<<< HEAD
+
+=======
                 
+>>>>>>> 1a9da27 (commit suicide)
                 for (String person : participants) {
                     graph.addVertex(person);
                 }
